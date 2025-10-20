@@ -1,16 +1,43 @@
-<div th:fragment="navbar">
-    <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
-        <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
-            <svg class="bi me-2" width="40" height="32" aria-hidden="true">
-                <use xlink:href="#bootstrap"></use>
-            </svg>
-            <span class="fs-4">Condominio</span!> </a>
-        <ul class="nav nav-pills">
-            <li class="nav-item">
-                <a href="/index" class="nav-link active" aria-current="page">Home</a>
-            </li>
-            <li class="nav-item"><a href="/login" class="nav-link">inicio sesion</a></li>
-            <li class="nav-item"><a href="#" class="nav-link">Pricing</a></li>
-        </ul>
-    </header>
+<div th:fragment="navbar-home">
+    <nav class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom navbar navbar-expand-lg colorespecial text-white border-bottom">
+        <div class="container-flex">
+            <!-- Botón hamburguesa para pantallas pequeñas -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
+                aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Contenido colapsable -->
+            <div class="collapse navbar-collapse justify-content-end" id="navbarContent">
+                <ul class="navbar-nav mb-2 mb-lg-0">
+                    <li class="nav-item"><a href="/index" class="nav-link active text-white" aria-current="page">Home</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link text-white">Nosotros</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link text-white">Contacto</a></li>
+                    <li class="nav-item"><a href="/login" class="nav-link text-white">Inicio sesión</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</div>
+
+<div th:fragment="navbar-inicio-sesion">
+    <nav class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom navbar navbar-expand-lg colorespecial text-white border-bottom">
+        <div class="container-flex">
+            <!-- Botón hamburguesa para pantallas pequeñas -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
+                aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Contenido colapsable -->
+            <div class="collapse navbar-collapse justify-content-end" id="navbarContent">
+                <ul class="navbar-nav mb-2 mb-lg-0">
+                    <li class="nav-item"><a href="/index" class="nav-link text-white" aria-current="page">Home</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link  text-white">Nosotros</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link text-white">Contacto</a></li>
+                    <li class="nav-item"><a href="/login" class="nav-link active text-white">Inicio sesión</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
 </div>
