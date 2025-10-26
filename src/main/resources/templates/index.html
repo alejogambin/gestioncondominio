@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head th:replace="~{fragmentos/heads :: head}"></head>
+
+<body>
+    <!-- headre  -->
+    <div th:replace="~{fragmentos/navbar :: navbar-home}"></div>
+    <!-- fin header -->
+    </div><!-- /.row --> <!-- START THE FEATURETTES -->
+    <hr class="featurette-divider">
+    <div class="row featurette">
+        <div class="col-md-7">
+            <h2 class="featurette-heading fw-normal lh-1">Transparencia en los gastos comunes <span
+                    class="text-body-secondary">para una mejor convivencia.</span></h2>
+            <p class="lead">Cada mes, los residentes pueden revisar el detalle de los gastos comunes, incluyendo
+                mantención de áreas verdes, seguridad, limpieza y administración. Nuestro sistema permite visualizar el
+                historial de pagos y generar reportes personalizados por departamento.</p>
+        </div>
+        <div class="col-md-5">
+            <img src="/app/src/main/resources/templates/images/gastos-comunes.png" class="img-fluid mx-auto" alt="Resumen de gastos comunes">
+        </div>
+    </div>
+    <hr class="featurette-divider">
+    <div class="row featurette">
+        <div class="col-md-7">
+            <h2 class="featurette-heading fw-normal lh-1">Visitas y estacionamientos <span
+                    class="text-body-secondary">con control automatizado.</span></h2>
+            <p class="lead">Los residentes pueden registrar visitas desde la app, asignar estacionamientos disponibles y
+                recibir notificaciones cuando el visitante ingresa. El sistema también permite llevar un control de los
+                espacios ocupados y generar alertas de sobreuso.</p>
+        </div>
+        <div class="col-md-5">
+            <img src="/app/src/main/resources/templates/images/visitas-estacionamientos.png" class="img-fluid mx-auto"
+                alt="Control de visitas y estacionamientos">
+        </div>
+    </div>
+
+    <hr class="featurette-divider">
+    <div class="row featurette">
+        <div class="col-md-7 order-md-2">
+            <h2 class="featurette-heading fw-normal lh-1">Control de ocupación <span class="text-body-secondary">en
+                    tiempo real.</span></h2>
+            <p class="lead">El sistema permite registrar la cantidad total de departamentos, su estado (ocupado,
+                disponible, en mantención) y generar estadísticas de ocupación por torre o piso. Esto facilita la
+                gestión de arriendos y la planificación de recursos.</p>
+        </div>
+        <div class="col-md-5 order-md-1">
+            <img src="/app/src/main/resources/templates/images/departamentos.png" class="img-fluid mx-auto" alt="Gráfico de ocupación de departamentos">
+        </div>
+    </div>
+    <hr class="featurette-divider"> <!-- /END THE FEATURETTES -->
+    </div>
+    <!-- inicio footer-->
+    <div th:replace="~{fragmentos/footer :: footer}"></div>
+    <!--fin footer-->
+</body>
+
+</html>
