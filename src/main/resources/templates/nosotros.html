@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head th:replace="~{fragmentos/heads :: head}"></head>
+
+<body>
+    <nav th:replace="~{fragmentos/navbar :: navbar-home}"></nav>
+    <div class="container my-5">
+        <h1 class="text-center mb-4">Sobre Nosotros</h1>
+
+        <div class="row mb-5">
+            <div class="col-md-6">
+                <h3>¿Quiénes somos?</h3>
+                <p>Somos una plataforma dedicada a facilitar la administración de condominios, enfocándonos en la
+                    transparencia, eficiencia y comodidad de los residentes. Nuestro sistema permite gestionar gastos
+                    comunes, controlar visitas, visualizar la ocupación de departamentos y administrar estacionamientos
+                    de forma automatizada.</p>
+            </div>
+            <div class="col-md-6">
+                <img src="/images/equipo-condominio.jpg" class="img-fluid rounded" alt="Equipo de gestión">
+            </div>
+        </div>
+
+        <div class="row mb-5">
+            <div class="col-md-6 order-md-2">
+                <h3>Nuestra misión</h3>
+                <p>Brindar herramientas tecnológicas accesibles para mejorar la convivencia y organización dentro de
+                    comunidades residenciales. Creemos en la gestión colaborativa, donde cada residente tiene acceso
+                    claro a la información que le afecta.</p>
+            </div>
+            <div class="col-md-6 order-md-1">
+                <img src="/images/mision-condominio.jpg" class="img-fluid rounded" alt="Misión del proyecto">
+            </div>
+        </div>
+
+        <div class="row mb-5">
+            <div class="col-md-6">
+                <h3>Lo que ofrecemos</h3>
+                <ul>
+                    <li>📊 Visualización de gastos comunes por departamento</li>
+                    <li>🏘️ Registro y control de ocupación de unidades</li>
+                    <li>🚗 Gestión de estacionamientos y visitas</li>
+                    <li>📱 Acceso desde cualquier dispositivo</li>
+                    <li>🔒 Seguridad y privacidad de los datos</li>
+                </ul>
+            </div>
+            <div class="col-md-6">
+                <img src="/images/servicios-condominio.jpg" class="img-fluid rounded" alt="Servicios ofrecidos">
+            </div>
+        </div>
+
+        <div class="text-center">
+            <a href="/contacto" class="btn btn-primary btn-lg">Contáctanos</a>
+        </div>
+    </div>
+    <footer th:replace="~{fragmentos/footer :: footer}"></footer>
+</body>
+
+</html>
