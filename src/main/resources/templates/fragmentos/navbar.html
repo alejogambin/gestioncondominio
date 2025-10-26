@@ -33,11 +33,39 @@
             <div class="collapse navbar-collapse justify-content-end" id="navbarContent">
                 <ul class="navbar-nav mb-2 mb-lg-0">
                     <li class="nav-item"><a href="/index" class="nav-link text-white" aria-current="page">Home</a></li>
-                    <li class="nav-item"><a href="#" class="nav-link  text-white">Nosotros</a></li>
-                    <li class="nav-item"><a href="#" class="nav-link text-white">Contacto</a></li>
+                    <li class="nav-item"><a href="/nosotros" class="nav-link  text-white">Nosotros</a></li>
+                    <li class="nav-item"><a href="/contacto" class="nav-link text-white">Contacto</a></li>
                     <li class="nav-item"><a href="/login" class="nav-link active text-white">Inicio sesión</a></li>
                 </ul>
             </div>
         </div>
     </nav>
 </div>
+
+<div th:fragment="navbar-dashboard">
+  <nav class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom navbar navbar-expand-lg colorespecial text-white">
+    <div class="container-flex">
+      <!-- Botón hamburguesa para pantallas pequeñas -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
+        aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- Contenido colapsable -->
+      <div class="collapse navbar-collapse justify-content-end" id="navbarContent">
+        <ul class="navbar-nav mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a href="/dasboard" class="nav-link text-white" aria-current="page">🏠 Dashboard</a>
+          </li>
+          <li class="nav-item">
+            <a href="/perfil" class="nav-link text-white">👤 Perfil</a>
+          </li>
+          <li class="nav-item">
+            <a href="/logout" class="nav-link text-white">🔓 Cerrar sesión</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</div>
+

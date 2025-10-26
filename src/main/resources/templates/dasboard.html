@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head th:replace="~{fragmentos/heads :: head}"></head>
+
+<body class="d-flex flex-column min-vh-100">
+    <div th:replace="~{fragmentos/navbar :: navbar-dashboard}"></div>
+    <div class="container my-5  flex-grow-1">
+        <h1 class="text-center mb-4">Panel de Gestión del Condominio</h1>
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
+
+            <!-- Gastos Comunes -->
+            <div class="col">
+                <div class="card h-100 text-center">
+                    <div class="card-body">
+                        <h5 class="card-title"><i class="bi bi-cash-coin"></i> Gastos Comunes</h5>
+                        <p class="card-text">Visualiza y administra los gastos mensuales del condominio. Genera reportes
+                            por departamento y controla pagos.</p>
+                        <a href="/gastos" class="btn btn-primary">Ver detalles</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Departamentos -->
+            <div class="col">
+                <div class="card h-100 text-center">
+                    <div class="card-body">
+                        <h5 class="card-title"><i class="bi bi-building"></i> Departamentos</h5>
+                        <p class="card-text">Consulta la cantidad de departamentos, su estado de ocupación y gestiona
+                            unidades disponibles.</p>
+                        <a href="/departamentos" class="btn btn-primary">Administrar</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Visitas -->
+            <div class="col">
+                <div class="card h-100 text-center">
+                    <div class="card-body">
+                        <h5 class="card-title"><i class="bi bi-person-lines-fill"></i> Visitas</h5>
+                        <p class="card-text">Registra y controla las visitas al condominio. Asigna estacionamientos y
+                            recibe alertas de ingreso.</p>
+                        <a href="/visitas" class="btn btn-primary">Gestionar</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Estacionamientos -->
+            <div class="col">
+                <div class="card h-100 text-center">
+                    <div class="card-body">
+                        <h5 class="card-title"><i class="bi bi-car-front-fill"></i> Estacionamientos</h5>
+                        <p class="card-text">Administra los espacios disponibles, asigna por departamento y controla el
+                            uso diario.</p>
+                        <a href="/estacionamientos" class="btn btn-primary">Ver mapa</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <footer th:replace="~{fragmentos/footer :: footer-dasboard}"></footer>
+</body>
+
+</html>
