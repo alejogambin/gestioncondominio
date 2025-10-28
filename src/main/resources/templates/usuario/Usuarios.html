@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head th:replace="~{fragmentos/heads :: head}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <style>
+        .fab {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            font-size: 24px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+            z-index: 1000;
+        }
+    </style>
+</head>
+
+<body class="d-flex flex-column min-vh-100 bg-light">
+    <nav th:replace="~{fragmentos/navbar :: navbar-dashboard}"></nav>
+
+    <main class="container mt-5 flex-grow-1">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h2 class="mb-0"><i class="bi bi-people-fill me-2"></i>Lista de Usuarios</h2>
+            <a th:href="@{/usuarios/nuevo}" class="btn btn-primary d-flex align-items-center">
+                <i class="bi bi-person-plus-fill me-2"></i> Agregar Usuario
+            </a>
+        </div>
+
+        <div class="table-responsive">
+            <table class="table table-bordered table-hover align-middle bg-white shadow-sm">
+                <thead class="table-primary text-center">
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Rol</th>
+                        <th scope="col">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="usuario : ${usuarios}">
+                        <td th:text="${usuario.id}" class="text-center">1</td>
+                        <td th:text="${usuario.nombre}">Juan Pérez</td>
+                        <td th:text="${usuario.email}">juan@example.com</td>
+                        <td th:text="${usuario.rol}">Administrador</td>
+                        <td class="text-center">
+                            <a th:href="@{'/usuarios/editar/' + ${usuario.id}}"
+                                class="btn btn-outline-warning btn-sm me-1" title="Editar">
+                                <i class="bi bi-pencil-fill"></i>
+                            </a>
+                            <a th:href="@{'/usuarios/eliminar/' + ${usuario.id}}" class="btn btn-outline-danger btn-sm"
+                                onclick="return confirm('¿Estás seguro de eliminar este usuario?');" title="Eliminar">
+                                <i class="bi bi-trash-fill"></i>
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+    <footer th:replace="~{fragmentos/footer :: footer-dasboard}"></footer>
+    
+</body>
+
+</html>
