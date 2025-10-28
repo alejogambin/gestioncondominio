@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head th:replace="~{fragmentos/heads :: head}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+</head>
+
+<body class="d-flex flex-column min-vh-100 bg-light">
+    <nav th:replace="~{fragmentos/navbar :: navbar-dashboard}"></nav>
+
+    <main class="container mt-5 flex-grow-1">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h2 class="mb-0"><i class="bi bi-house-door-fill me-2"></i>Lista de Departamentos</h2>
+            <a th:href="@{/departamentos/nuevo}" class="btn btn-primary d-flex align-items-center">
+                <i class="bi bi-plus-lg me-2"></i>Agregar Departamento
+            </a>
+        </div>
+
+        <div class="table-responsive">
+            <table class="table table-bordered table-hover align-middle bg-white shadow-sm">
+                <thead class="table-primary text-center">
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Número</th>
+                        <th scope="col">Torre</th>
+                        <th scope="col">Propietario</th>
+                        <th scope="col">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="departamento : ${departamentos}">
+                        <td th:text="${departamento.idDepartamento}" class="text-center">1</td>
+                        <td th:text="${departamento.numero}">101</td>
+                        <td th:text="${departamento.torre.nombre}">Torre Norte</td>
+                        <td th:text="${departamento.propietario}">Ana Gómez</td>
+                        <td class="text-center">
+                            <a th:href="@{'/departamentos/editar/' + ${departamento.idDepartamento}}"
+                               class="btn btn-outline-warning btn-sm me-1" title="Editar">
+                                <i class="bi bi-pencil-fill"></i>
+                            </a>
+                            <a th:href="@{'/departamentos/eliminar/' + ${departamento.idDepartamento}}"
+                               class="btn btn-outline-danger btn-sm"
+                               onclick="return confirm('¿Estás seguro de eliminar este departamento?');" title="Eliminar">
+                                <i class="bi bi-trash-fill"></i>
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+    <footer th:replace="~{fragmentos/footer :: footer-dasboard}"></footer>
+
+    <script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+</body>
+
+</html>

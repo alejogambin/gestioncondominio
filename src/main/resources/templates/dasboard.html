@@ -3,56 +3,63 @@
 
 <head th:replace="~{fragmentos/heads :: head}"></head>
 
-<body class="d-flex flex-column min-vh-100">
+<body class="d-flex flex-column min-vh-100 bg-light">
     <div th:replace="~{fragmentos/navbar :: navbar-dashboard}"></div>
-    <div class="container my-5  flex-grow-1">
-        <h1 class="text-center mb-4">Panel de Gestión del Condominio</h1>
-        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
+    <div class="container my-5 flex-grow-1">
+        <h1 class="text-center mb-5 fw-bold">Panel de Gestión del Condominio</h1>
 
-            <!-- Gastos Comunes -->
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+            <!-- Torres -->
             <div class="col">
-                <div class="card h-100 text-center">
+                <div class="card h-100 shadow-sm text-center">
                     <div class="card-body">
-                        <h5 class="card-title"><i class="bi bi-cash-coin"></i> Gastos Comunes</h5>
-                        <p class="card-text">Visualiza y administra los gastos mensuales del condominio. Genera reportes
-                            por departamento y controla pagos.</p>
-                        <a href="/gastos" class="btn btn-primary">Ver detalles</a>
+                        <h5 class="card-title"><i class="bi bi-building me-2"></i>Torres</h5>
+                        <p class="card-text">Administra las torres del condominio, incluyendo su número, nombre y dirección.</p>
+                        <a href="/torre" class="btn btn-outline-primary">Ver torres</a>
                     </div>
                 </div>
             </div>
 
             <!-- Departamentos -->
             <div class="col">
-                <div class="card h-100 text-center">
+                <div class="card h-100 shadow-sm text-center">
                     <div class="card-body">
-                        <h5 class="card-title"><i class="bi bi-building"></i> Departamentos</h5>
-                        <p class="card-text">Consulta la cantidad de departamentos, su estado de ocupación y gestiona
-                            unidades disponibles.</p>
-                        <a href="/departamentos" class="btn btn-primary">Administrar</a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Visitas -->
-            <div class="col">
-                <div class="card h-100 text-center">
-                    <div class="card-body">
-                        <h5 class="card-title"><i class="bi bi-person-lines-fill"></i> Visitas</h5>
-                        <p class="card-text">Registra y controla las visitas al condominio. Asigna estacionamientos y
-                            recibe alertas de ingreso.</p>
-                        <a href="/visitas" class="btn btn-primary">Gestionar</a>
+                        <h5 class="card-title"><i class="bi bi-door-open-fill me-2"></i>Departamentos</h5>
+                        <p class="card-text">Consulta y gestiona los departamentos, su ocupación, asignación y relación con torres.</p>
+                        <a href="/departamento" class="btn btn-outline-primary">Administrar departamentos</a>
                     </div>
                 </div>
             </div>
 
             <!-- Estacionamientos -->
             <div class="col">
-                <div class="card h-100 text-center">
+                <div class="card h-100 shadow-sm text-center">
                     <div class="card-body">
-                        <h5 class="card-title"><i class="bi bi-car-front-fill"></i> Estacionamientos</h5>
-                        <p class="card-text">Administra los espacios disponibles, asigna por departamento y controla el
-                            uso diario.</p>
-                        <a href="/estacionamientos" class="btn btn-primary">Ver mapa</a>
+                        <h5 class="card-title"><i class="bi bi-car-front-fill me-2"></i>Estacionamientos</h5>
+                        <p class="card-text">Gestiona los espacios de estacionamiento, su disponibilidad y asignación por departamento.</p>
+                        <a href="/estacionamiento" class="btn btn-outline-primary">Ver estacionamientos</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Usuarios -->
+            <div class="col">
+                <div class="card h-100 shadow-sm text-center">
+                    <div class="card-body">
+                        <h5 class="card-title"><i class="bi bi-person-fill me-2"></i>Usuarios</h5>
+                        <p class="card-text">Administra los usuarios del sistema, sus roles y permisos dentro del condominio.</p>
+                        <a href="/usuarios" class="btn btn-outline-primary">Gestionar usuarios</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bodegas -->
+            <div class="col">
+                <div class="card h-100 shadow-sm text-center">
+                    <div class="card-body">
+                        <h5 class="card-title"><i class="bi bi-box-seam me-2"></i>Bodegas</h5>
+                        <p class="card-text">Controla las bodegas disponibles, su asignación por departamento y estado de uso.</p>
+                        <a href="/bodega" class="btn btn-outline-primary">Ver bodegas</a>
                     </div>
                 </div>
             </div>
