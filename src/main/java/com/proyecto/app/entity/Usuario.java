@@ -35,4 +35,54 @@ public class Usuario {
         this.updated_at = new Date();
     }
     protected Usuario() {}
+    // Getters and Setters
+    public long getId_user() {
+        return id_user;
+    }
+    public void setId_user(long id_user) {
+        this.id_user = id_user;
+    }
+    public String getRut() {
+        return rut;
+    }
+    public void setRut(String rut) {
+        this.rut = rut;
+    }
+    public String getNombre() {
+        return nombre;
+    }
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+    public String getApellido() {
+        return apellido;
+    }
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
+    }
+    public String getCorreo() {
+        return correo;
+    }
+    public void setCorreo(String correo) {
+        this.correo = correo;
+    }
+    public String getContraseña() {
+        return contraseña;
+    }
+    public void setContraseña(String contraseña) {
+        this.contraseña = contraseña;
+    }
+    public String getRol() {
+        return rol;
+    }
+    public void setRol(String rol) {
+        this.rol = rol;
+    }
+    public Date getCreated_at() {
+        return created_at;
+    }
+    public Date getUpdated_at() {
+        return updated_at;
+    }
+    
 }

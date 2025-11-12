@@ -15,13 +15,14 @@ import jakarta.persistence.TemporalType;
 
 @Entity
 public class Torre {
-    
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id_Torre;
     private String nombre;
-    private Integer num_torre ;
-    private String direccion ;
-    
+    private Integer num_torre;
+    private String direccion;
+
     @Temporal(TemporalType.DATE)
     @DateTimeFormat(pattern = "dd-MM-yyyy")
     private Date created_at;
@@ -30,12 +31,53 @@ public class Torre {
     private Date updated_at;
 
     @PrePersist
-    protected void prePersist(){
+    protected void prePersist() {
         this.created_at = new Date();
     }
+
     @PreUpdate
-    protected void preUpdate(){
+    protected void preUpdate() {
         this.updated_at = new Date();
     }
-    protected Torre() {}
+
+    protected Torre() {
+    }
+
+    // getters and setters
+    public long getId_torre() {
+        return id_Torre;
+    }
+
+    public void setId_torre(long id_torre) {
+        this.id_Torre = id_torre;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+    public Integer getNum_torre(){
+        return num_torre;
+    }
+
+    public void setNum_torre(Integer num_torre) {
+        this.num_torre = num_torre;
+    }
+
+    public String getDireccion() {
+        return direccion;
+    }
+
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
+    }
+     public Date getCreated_at() {
+        return created_at;
+    }
+    public Date getUpdated_at() {
+        return updated_at;
+    }
 }
