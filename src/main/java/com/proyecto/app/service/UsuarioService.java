@@ -2,7 +2,6 @@ package com.proyecto.app.service;
 
 import java.util.List;
 
-import com.proyecto.app.controller.usuariosController;
 import com.proyecto.app.entity.Usuario;
 
 public interface UsuarioService {
