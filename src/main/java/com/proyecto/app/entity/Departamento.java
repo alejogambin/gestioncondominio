@@ -25,9 +25,6 @@ public class Departamento {
     private Integer num_departamento  ;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_user")
-    private Usuario id_arrendatario  ;
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_user")
     private Usuario id_propietario ;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_torre")
@@ -69,17 +66,11 @@ public class Departamento {
     public void setNum_departamento(Integer num_departamento) {
         this.num_departamento = num_departamento;
     }
-    public Usuario getId_arrendatario() {
-        return id_arrendatario;
-    }
-    public void setId_arrendatario(Usuario id_arrendatario) {
-        this.id_arrendatario = id_arrendatario;
-    }
     public Usuario getId_propietario() {
         return id_propietario;
     }
-    public void setId_propietario(Usuario id_propietario) {
-        this.id_propietario = id_propietario;
+    public void setId_propietario(Usuario id_user) {
+        this.id_propietario = id_user;
     }
     public Torre getId_torre() {
         return id_torre;

@@ -3,13 +3,14 @@ package com.proyecto.app.service.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.proyecto.app.DAO.IUsuarioDao;
 import com.proyecto.app.entity.Usuario;
 import com.proyecto.app.service.UsuarioService;
 
 import jakarta.transaction.Transactional;
-
+@Service
 public class UsuarioServiceImpl implements UsuarioService {
     @Autowired
     private IUsuarioDao usuarioDao;
