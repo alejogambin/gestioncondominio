@@ -34,7 +34,9 @@ public class Usuario {
     protected void preUpdate(){
         this.updated_at = new Date();
     }
-    protected Usuario() {}
+
+    public Usuario() {}
+
     // Getters and Setters
     public long getId_user() {
         return id_user;

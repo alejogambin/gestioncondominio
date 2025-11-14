@@ -1,7 +1,6 @@
 -- Cargar datos iniciales para la tabla 'usuario'
 -- Nota: columnas alineadas con la entidad Usuario (sin 'edad')
 INSERT INTO usuario (rut, nombre, apellido, contraseña, correo, rol) VALUES('USR0001','Juan','Perez','password1','juan.perez@example.com','ADMIN');
-INSERT INTO usuario (rut, nombre, apellido, contraseña, correo, rol) VALUES('USR0001','Juan','Perez','password1','juan.perez@example.com','ADMIN');
 INSERT INTO usuario (rut, nombre, apellido, contraseña, correo, rol) VALUES('USR0002','Maria','Gomez','password2','maria.gomez@example.com','USER');
 INSERT INTO usuario (rut, nombre, apellido, contraseña, correo, rol) VALUES('USR0003','Luis','Rodriguez','password3','luis.rodriguez@example.com','USER');
 INSERT INTO usuario (rut, nombre, apellido, contraseña, correo, rol) VALUES('USR0004','Ana','Martinez','password4','ana.martinez@example.com','USER');
