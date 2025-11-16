@@ -6,15 +6,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.proyecto.app.entity.Usuario;
 import com.proyecto.app.service.impl.UsuarioServiceImpl;
-import org.springframework.web.bind.annotation.RequestParam;
-
-
 
 
 
@@ -38,15 +36,21 @@ public class usuariosController {
     
     @GetMapping("/crear")
     public String crear(Model model) {
-        model.addAttribute("usuario", new Usuario());
+        model.addAttribute("usuario", usuarioService.findAll());
         return "usuario/crear";
     }
     
 
-    @PostMapping("path")
-    public String postMethodName(@RequestBody String entity) {
-        
-        return entity;
+    @PostMapping("/guardar")
+    public String guardar(@ModelAttribute Usuario usuario) {
+        usuarioService.save(usuario);
+        return "redirect:/usuario/list";
+    }
+    
+    @GetMapping("/delete/{id}")
+    public String delete(@PathVariable Long id) {
+        usuarioService.delete(id);
+        return "redirect:/usuario/list";
     }
     
 }
