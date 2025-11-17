@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head th:replace="~{fragmentos/heads :: head}"></head>
+
+<body class="bg-light d-flex flex-column min-vh-100">
+    <nav th:replace="~{fragmentos/navbar :: navbar-dashboard}"></nav>
+    <div class="container my-5 flex-grow-1">
+        <div class="row justify-content-center">
+            <div class="col-lg-6 col-md-8">
+                <div class="card shadow-sm border-0">
+                    <div class="card-body p-4">
+                        <h2 class="text-center mb-4 fw-bold text-primary">Editar Usuario</h2>
+                        <form id="formeditarUSuario" th:action="@{/usuario/guardar}" th:object="${usuario}" method="post" autocomplete="off">
+                            <input type="hidden" for="id_user" name="id_user" th:field="*{id_user}" id="id_user"></input>
+                            <input type="hidden" for="updated_at" name="updated_at" th:field="*{updated_at}" id="updated_at"></input>
+                            <input type="hidden" for="id_user" name="id_user" th:field="*{id_user}" id="id_user"></input>
+                            <div class="mb-3">
+                                <label for="rut" class="form-label">RUT</label>
+                                <input type="text" class="form-control" th:field="*{rut}" id="rut" name="rut" required placeholder="Ej: 12.345.678-9">
+                            </div>
+                            <div class="mb-3">
+                                <label for="nombre" class="form-label">Nombre</label>
+                                <input type="text" class="form-control" th:field="*{nombre}" id="nombre" name="nombre" required placeholder="Nombre">
+                            </div>
+                            <div class="mb-3">
+                                <label for="apellido" class="form-label">Apellido</label>
+                                <input type="text" class="form-control" th:field="*{apellido}" id="apellido" name="apellido" required placeholder="Apellido">
+                            </div>
+                            <div class="mb-3">
+                                <label for="correo" class="form-label">Correo electrónico</label>
+                                <input type="email" class="form-control" th:field="*{correo}" id="correo" name="correo" required placeholder="correo@ejemplo.com">
+                            </div>
+                            <div class="mb-3">
+                                <label for="contraseña" class="form-label">Contraseña</label>
+                                <input type="password" class="form-control" th:field="*{contraseña}" id="contraseña" name="contraseña" required placeholder="Mínimo 8 caracteres">
+                            </div>
+                            <div class="mb-3">
+                                <label for="rol" class="form-label">Rol</label>
+                                <select id="rol" th:field="*{rol}" name="rol" class="form-select" required>
+                                    <option value="" disabled selected>Selecciona un rol</option>
+                                    <option value="administrador">Administrador</option>
+                                    <option value="propietario">Propietario</option>
+                                    <option value="arrendatario">Arrendatario</option>
+                                </select>
+                            </div>
+                            <div class="d-grid">
+                                <button type="submit" class="btn btn-primary btn-lg">editar usuario</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="text-center mt-3">
+                    <a href="/usuario/list" class="text-secondary text-decoration-none">
+                        <i class="bi bi-arrow-left"></i> Volver al listado de usuarios
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer th:replace="~{fragmentos/footer :: footer-dasboard}"></footer>
+</body>
+
+</html>

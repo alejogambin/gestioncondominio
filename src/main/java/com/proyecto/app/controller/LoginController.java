@@ -23,7 +23,7 @@ public class LoginController {
     public String ingresar(@ModelAttribute Usuario usuario) {
         List<Usuario> usuarios = usuarioService.findAll();
         for (Usuario u : usuarios) {
-            if (u.getCorreo().equals(usuario.getCorreo()) && u.getContraseña().equals(usuario.getContraseña())) {
+            if (usuario.getCorreo()!=null && usuario.getContraseña()!=null && u.getCorreo().equals(usuario.getCorreo()) && u.getContraseña().equals(usuario.getContraseña())) {
                 return "redirect:/dasboard";
             }
         }

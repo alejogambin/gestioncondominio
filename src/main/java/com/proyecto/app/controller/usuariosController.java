@@ -46,11 +46,23 @@ public class usuariosController {
         usuarioService.save(usuario);
         return "redirect:/usuario/list";
     }
+
+     @PostMapping("/registrar")
+    public String registrar(@ModelAttribute Usuario usuario) {
+        usuarioService.save(usuario);
+        return "redirect:/login";
+    }
     
     @GetMapping("/delete/{id}")
     public String delete(@PathVariable Long id) {
         usuarioService.delete(id);
         return "redirect:/usuario/list";
+    }
+    @GetMapping("/editar/{id}")
+    public String editar(@PathVariable Long id, Model model){
+        Usuario usuario = usuarioService.findOne(id);
+        model.addAttribute("usuario", usuario);
+        return "usuario/editar";
     }
     
 }
