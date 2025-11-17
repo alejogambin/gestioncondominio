@@ -22,11 +22,6 @@ public class usuariosController {
     @Autowired
     private UsuarioServiceImpl usuarioService;
     
-    @GetMapping("/usuarios")
-    public String usuarios() {
-        return "usuario/list";
-    }
-
     @GetMapping("/list")
     public String listUsuarios(Model model) {
         List<Usuario> usuarios = usuarioService.findAll();
@@ -40,7 +35,6 @@ public class usuariosController {
         return "usuario/crear";
     }
     
-
     @PostMapping("/guardar")
     public String guardar(@ModelAttribute Usuario usuario) {
         usuarioService.save(usuario);
