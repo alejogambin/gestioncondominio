@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head th:replace="~{fragmentos/heads :: head}"></head>
+
+<body class="bg-light d-flex flex-column min-vh-100">
+    <nav th:replace="~{fragmentos/navbar :: navbar-dashboard}"></nav>
+    <div class="container my-5 flex-grow-1">
+        <div class="row justify-content-center">
+            <div class="col-lg-6 col-md-8">
+                <div class="card shadow-sm border-0">
+                    <div class="card-body p-4">
+                        <h2 class="text-center mb-4 fw-bold text-primary">Crear Torre</h2>
+                        <form id="formCrearTorre" th:action="@{/torre/guardar}" method="post" autocomplete="off">
+                            <div class="mb-3">
+                                <label for="nombre" class="form-label">Nombre</label>
+                                <input type="text" class="form-control" id="nombre" name="nombre" required placeholder="Nombre">
+                            </div>
+                            <div class="mb-3">
+                                <label for="Num_torre" class="form-label">Numero de torre</label>
+                                <input type="number" class="form-control" id="Num_torre" name="Num_torre" required placeholder="Numero de torre">
+                            </div>
+                            <div class="mb-3">
+                                <label for="Direccion" class="form-label">Direccion</label>
+                                <input type="text" class="form-control" id="Direccion" name="Direccion" required placeholder="Direccion">
+                            </div>
+                            <div class="d-grid">
+                                <button type="submit" class="btn btn-primary btn-lg">Crear torre</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="text-center mt-3">
+                    <a href="/torre/list" class="text-secondary text-decoration-none">
+                        <i class="bi bi-arrow-left"></i> Volver al listado de usuarios
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer th:replace="~{fragmentos/footer :: footer-dasboard}"></footer>
+</body>
+
+</html>

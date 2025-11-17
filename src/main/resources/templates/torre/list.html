@@ -28,27 +28,27 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr th:each="torre : ${torre}">
-                        <td th:text="${torre.id_Torre}" class="text-center">1</td>
+                    <tr th:each="torre : ${torres}">
+                        <td th:text="${torre.id_torre}" class="text-center">1</td>
                         <td th:text="${torre.nombre}">Torre Norte</td>
-                        <td th:text="${torre.numTorre}">101</td>
+                        <td th:text="${torre.num_torre}">101</td>
                         <td th:text="${torre.direccion}">Av. Central 123</td>
                         <td class="text-center">
-                            <a th:href="@{'/torres/editar/' + ${torre.idTorre}}"
+                            <a th:href="@{'/torre/editar/' + ${torre.id_torre}}"
                                class="btn btn-outline-warning btn-sm me-1" title="Editar">
                                 <i class="bi bi-pencil-fill"></i>
                             </a>
-                            <a th:href="@{'/torres/eliminar/' + ${torre.idTorre}}"
+                            <a th:href="@{'/torre/delete/' + ${torre.id_torre}}"
                                class="btn btn-outline-danger btn-sm"
                                onclick="return confirm('¿Estás seguro de eliminar esta torre?');" title="Eliminar">
                                 <i class="bi bi-trash-fill"></i>
                             </a>
                         </td>
                     </tr>
-                    <tr th:if="${#lists.isEmpty(torre)}">
+                    <tr th:if="${#lists.isEmpty(torres)}">
                         <td colspan="6" class="text-center text-muted py-4">
-                            <p class="mb-1">No hay usuarios registrados.</p>
-                            <a th:href="@{/usuarios/crear}">Crear el primer usuario</a>
+                            <p class="mb-1">No hay torres registradas.</p>
+                            <a th:href="@{/torre/crear}">Crear la primera torre</a>
                         </td>
                     </tr>
                 </tbody>

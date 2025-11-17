@@ -18,7 +18,7 @@ public class Torre {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id_Torre;
+    private long id_torre;
     private String nombre;
     private Integer num_torre;
     private String direccion;
@@ -45,11 +45,11 @@ public class Torre {
 
     // getters and setters
     public long getId_torre() {
-        return id_Torre;
+        return id_torre;
     }
 
     public void setId_torre(long id_torre) {
-        this.id_Torre = id_torre;
+        this.id_torre = id_torre;
     }
 
     public String getNombre() {

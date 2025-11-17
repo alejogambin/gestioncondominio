@@ -6,6 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.proyecto.app.entity.Torre;
@@ -22,29 +25,27 @@ public class torreController {
         return "torre/list";
     }
     @GetMapping("/list")
-    public String listUsuarios(Model model) {
-        List<Torre> torre = torreService.findAll();
-        model.addAttribute("torres", torre);
+    public String listTorres(Model model) {
+        List<Torre> torres = torreService.findAll();
+        model.addAttribute("torres", torres);
         return "torre/list";
     }
-    /*  
+      
     @GetMapping("/crear")
     public String crear(Model model) {
-        model.addAttribute("usuario", usuarioService.findAll());
-        return "usuario/crear";
+        model.addAttribute("torre", torreService.findAll());
+        return "torre/crear";
     }
     
 
     @PostMapping("/guardar")
-    public String guardar(@ModelAttribute Usuario usuario) {
-        usuarioService.save(usuario);
-        return "redirect:/usuario/list";
-    }
-    
+    public String guardar(@ModelAttribute Torre torre) {
+        torreService.save(torre);
+        return "redirect:/torre/list";
+    } 
     @GetMapping("/delete/{id}")
     public String delete(@PathVariable Long id) {
-        usuarioService.delete(id);
-        return "redirect:/usuario/list";
+        torreService.delete(id);
+        return "redirect:/torre/list";
     }
-    */
 }
