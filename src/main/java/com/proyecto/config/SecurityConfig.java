@@ -21,18 +21,34 @@ import com.proyecto.app.service.impl.UsuarioServiceImpl;
 public class SecurityConfig {
     @Bean
 	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-		http
-			.authorizeHttpRequests((requests) -> requests
-				.requestMatchers("/", "/home").permitAll()
-				.anyRequest().authenticated()
+		return http
+		.authorizeHttpRequests(auth -> auth
+			// recursos estaticos publicos
+			.requestMatchers("/css/**", "/js/**","/images/**")
+			.permitAll()
+
+			// paginas publicas
+			.requestMatchers("/login", "/registro", "/index")
+			.permitAll()
+
+			//rutas protegidas por rol
+			.requestMatchers("/dasboard/**").hasRole("ADMIN")
+
+			//todo lo demas requiere autentificacion
+			.anyRequest().authenticated()
+		)
+			.formLogin(login -> login 
+				.loginPage("/login.html")
+				.defaultSuccessUrl("/index", true)
+				.permitAll()			
 			)
-			.formLogin((form) -> form
-				.loginPage("/login")
+
+			.logout(logout -> logout
+				.logoutUrl("/logout")
 				.permitAll()
 			)
-			.logout((logout) -> logout.permitAll());
 
-		return http.build();
+		.build();
 	}
 
 	@Bean
