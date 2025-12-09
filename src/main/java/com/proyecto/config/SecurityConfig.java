@@ -1,3 +1,4 @@
+/* 
 package com.proyecto.config;
 
 import java.util.List;
@@ -68,5 +69,6 @@ public class SecurityConfig {
         }
         return manager;
     }
-	 */
+	 
 }
+*/
