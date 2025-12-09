@@ -21,11 +21,11 @@
 # =====================================================
 
 # Usar imagen con Maven + JDK
-FROM maven:3.9-eclipse-temurin-17-alpine AS build 
+FROM maven:3.9-eclipse-temurin-17-alpine
 
 # Metadatos de la imagen
-LABEL maintainer="proyecto gestion condominio "
-LABEL description="proyecto gestion condominio - Modo Desarrollo"
+LABEL maintainer="Sistema de Prácticas <practicas@universidad.edu>"
+LABEL description="Sistema de Gestión de Prácticas - Modo Desarrollo"
 LABEL version="1.0-dev"
 
 # Establecer directorio de trabajo
@@ -33,64 +33,28 @@ WORKDIR /app
 
 # Copiar archivos de configuración primero (para aprovechar caché)
 COPY pom.xml .
-
+COPY mvnw .
+COPY .mvn .mvn
 
 # Descargar dependencias (se cachea si pom.xml no cambia)
-RUN mvn dependency:go-offline -B -e
+RUN mvn dependency:go-offline -B
 
 # Copiar el código fuente
 COPY src ./src
 
-#----
-#COMPILA Y EMPAQUETA LA APLICACION
-RUN mvn clean package -DskipTsts -B -e
-
-#verificar que el JAR se creo correctamente 
-RUN ls -lh /app/target/*.jar
-
-#etapa 2 ejecucion 
-#
-from eclipse-temurin:17-jre-alpine
-
-#metadatos de la imagen final
-label maintainer="gestion de condominio"
-label stage ="production"
-
-#seguridad
-
-run addgroup -S spring && adduser -S spring -G spring
-
-#establecer directorio de trabajo 
-workdir /app 
-
-#copiar jar desde la etapa de build
-copy --from=build /app/target/*.jar app.jar 
-#cambiar propietario del archivo usuario spring
-run chown spring:spring app.jar
-
-#cambiar el usuario no.root
-user spring:spring
-
-
 # Exponer puerto
 EXPOSE 8080
 
-
-env JAVA_OPTS="-Xms256m -Xmx512m"
-
-env SPRING_PROFILES_ACTIVE=production
-
-#HEALTHCHECK 
-
-HEALTHCHECK --interval=30s --timeout=3s --start-period=40s --retries=3 \
-    cmd wget --no-verbose --tries=1 --spider http://localhost:8080/actuator/health || exit 1
+# Variables de entorno
+ENV MAVEN_OPTS="-Xmx512m"
+ENV SPRING_PROFILES_ACTIVE=development
 
 # =====================================================
 # COMANDO DE INICIO - EJECUTAR CON MAVEN
 # =====================================================
 # spring-boot:run ejecuta la aplicación sin crear JAR
 # Permite hot reload de recursos estáticos (templates, CSS, JS)
-ENTRYPOINT ["sh", "-c", "java $JAVA_OPTS -Djava.security.egd=file:/dev/./urandom -jar app.jar"]
+CMD ["mvn", "spring-boot:run"]
 
 # =====================================================
 # COMANDOS ÚTILES PARA ESTUDIANTES
@@ -100,7 +64,7 @@ ENTRYPOINT ["sh", "-c", "java $JAVA_OPTS -Djava.security.egd=file:/dev/./urandom
 #    docker build -t springboot-dev .
 #
 # 2. EJECUTAR LOCALMENTE:
-#    docker run -p 8080:8080 springboot-dev
+#    docker run -p 8000:8080 springboot-dev
 #
 # 3. EJECUTAR CON VOLÚMENES (HOT RELOAD COMPLETO):
 #    Los cambios en src/ se reflejan automáticamente
