@@ -1,24 +1,53 @@
 package com.proyecto.app.entity;
 import java.util.Date;
+
 import org.springframework.format.annotation.DateTimeFormat;
+
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.PreUpdate;
+import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
+import java.util.Set;
+import java.util.HashSet;
 @Entity
+@Table(name = "usuarios")
 public class Usuario {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id_user; 
+    @Column(unique = true  , length = 12)
     private String rut ;
+    @Column(nullable = false, length = 100)
     private String nombre ;
+    @Column(nullable = false, length = 100)
     private String apellido ;
+    @Column(unique = true,nullable = false, length = 150)
     private String correo ;
+    @Column(nullable = false, length = 225)
     private String contraseña ;
-    private String rol ;
+    
+    @ManyToMany(fetch = FetchType.EAGER, cascade={CascadeType.PERSIST, CascadeType.MERGE})
+    @JoinTable(
+        name = "usuario_roles",
+        joinColumns = @JoinColumn(name = "id_user"),
+        inverseJoinColumns = @JoinColumn(name = "rol_id")
+
+    )
+
+    private Set<Rol> roles = new HashSet<>();
+
+    @Column(nullable = false)
+    private boolean activo = true;
     @Temporal(TemporalType.DATE)
     @DateTimeFormat(pattern = "dd-MM-yyyy")
     private Date created_at;
@@ -29,13 +58,21 @@ public class Usuario {
     @PrePersist
     protected void prePersist(){
         this.created_at = new Date();
+        
     }
     @PreUpdate
     protected void preUpdate(){
         this.updated_at = new Date();
     }
 
-    public Usuario() {}
+    public Usuario(String nombre, String apellido, String correo, String contraseña, Set<Rol> roles) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.correo = correo;
+        this.contraseña = contraseña;
+        this.roles = roles;
+        this.activo = true;
+    }
 
     // Getters and Setters
     public long getId_user() {
@@ -43,42 +80,56 @@ public class Usuario {
     }
     public void setId_user(long id_user) {
         this.id_user = id_user;
+        this.updated_at = new Date();
     }
     public String getRut() {
         return rut;
     }
     public void setRut(String rut) {
         this.rut = rut;
+        this.updated_at = new Date();
     }
     public String getNombre() {
         return nombre;
     }
     public void setNombre(String nombre) {
         this.nombre = nombre;
+        this.updated_at = new Date();
     }
     public String getApellido() {
         return apellido;
     }
     public void setApellido(String apellido) {
         this.apellido = apellido;
+        this.updated_at = new Date();
     }
     public String getCorreo() {
         return correo;
     }
     public void setCorreo(String correo) {
         this.correo = correo;
+        this.updated_at = new Date();
     }
     public String getContraseña() {
         return contraseña;
     }
     public void setContraseña(String contraseña) {
         this.contraseña = contraseña;
+        this.updated_at = new Date();
     }
-    public String getRol() {
-        return rol;
+    public Set<Rol> getRoles() {
+        return roles;
     }
-    public void setRol(String rol) {
-        this.rol = rol;
+    public void setRoles(Set<Rol> roles) {
+        this.roles = roles;
+        this.updated_at = new Date();
+    }
+    public boolean isActivo() {
+        return activo;
+    }
+    public void setActivo(boolean activo) {
+        this.activo = activo;
+        this.updated_at = new Date();
     }
     public Date getCreated_at() {
         return created_at;
@@ -87,4 +138,26 @@ public class Usuario {
         return updated_at;
     }
     
+
+    public void addRol(Rol rol){
+        this.roles.add(rol);
+        rol.getUsuarios().add(this);
+    }
+
+    public void removeRol(Rol rol){
+        this.roles.remove(rol);
+        rol.getUsuarios().remove(this);
+    }
+    public String GetUsername(){
+        return this.correo;
+    }
+    @Override
+    public String toString(){
+        return " Usuario {"+
+        "id_user="+ id_user + 
+        ", nombre= '"+ nombre + 
+        "'\'" + " apellido='" + apellido + '\'' +
+        "', correo='" + correo + 
+        "', activo='" + activo + ", roles=" + roles.size() + "'}";
+    }
 }

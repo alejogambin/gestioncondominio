@@ -56,6 +56,7 @@ public class SecurityConfig {
 	public PasswordEncoder passwordEncoder() {
 		return new BCryptPasswordEncoder();
 	}
+	/*
     @Bean
     public UserDetailsService userDEtailsService() throws Exception{
         InMemoryUserDetailsManager manager = new InMemoryUserDetailsManager();
@@ -68,5 +69,6 @@ public class SecurityConfig {
         }
         return manager;
     }
+		 */
 	 
 }
