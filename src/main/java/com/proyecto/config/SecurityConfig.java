@@ -1,4 +1,4 @@
-/* 
+
 package com.proyecto.config;
 
 import java.util.List;
@@ -29,7 +29,7 @@ public class SecurityConfig {
 			.permitAll()
 
 			// paginas publicas
-			.requestMatchers("/login", "/registro", "/index")
+			.requestMatchers("/login", "/registro", "/index", "")
 			.permitAll()
 
 			//rutas protegidas por rol
@@ -56,7 +56,6 @@ public class SecurityConfig {
 	public PasswordEncoder passwordEncoder() {
 		return new BCryptPasswordEncoder();
 	}
-    /*
     @Bean
     public UserDetailsService userDEtailsService() throws Exception{
         InMemoryUserDetailsManager manager = new InMemoryUserDetailsManager();
@@ -71,4 +70,3 @@ public class SecurityConfig {
     }
 	 
 }
-*/
