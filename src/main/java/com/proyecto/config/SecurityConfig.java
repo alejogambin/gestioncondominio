@@ -29,18 +29,24 @@ public class SecurityConfig {
 			.permitAll()
 
 			// paginas publicas
-			.requestMatchers("/login", "/registro", "/index", "")
+			.requestMatchers("/login", "/registro", "/index", "/contacto")
 			.permitAll()
 
 			//rutas protegidas por rol
 			.requestMatchers("/dasboard/**").hasRole("ADMIN")
+
+			.requestMatchers("/dasboard").hasRole("USER")
 
 			//todo lo demas requiere autentificacion
 			.anyRequest().authenticated()
 		)
 			.formLogin(login -> login 
 				.loginPage("/login.html")
-				.defaultSuccessUrl("/index", true)
+				.loginProcessingUrl("/login")
+				.defaultSuccessUrl("/dasboard", true)
+				.usernameParameter("correo")
+				.passwordParameter("contraseña")
+				.failureUrl("/login?error=true")
 				.permitAll()			
 			)
 

@@ -2,7 +2,6 @@ package com.proyecto.app.service.impl;
 
 import java.util.List;
 import java.util.Set;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,12 +15,11 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
 import com.proyecto.app.DAO.IUsuarioDao;
 import com.proyecto.app.entity.Usuario;
-import com.proyecto.app.entity.Rol;
 import com.proyecto.app.service.UsuarioService;
 
 import org.springframework.transaction.annotation.Transactional;
 @Service
-public class UsuarioServiceImpl implements UsuarioService {
+public class UsuarioServiceImpl implements UsuarioService, UserDetailsService {
     @Autowired
     private IUsuarioDao usuarioDao;
     
@@ -53,12 +51,7 @@ public class UsuarioServiceImpl implements UsuarioService {
         Set<GrantedAuthority> authorities = usuario.getRoles().stream()
         .map( rol -> new SimpleGrantedAuthority(rol.getNombre())).collect(Collectors.toSet());
 
-        if (authorities.isEmpty() && usuario.getRoles() != null){
-            String rolNombre = usuario.getRoles().startsWith("ROLE_")
-            ? usuario.getRoles()
-            : "ROLE_" + usuario.getRoles().toUpperCase();
-            authorities.add(new SimpleGrantedAuthority( rolNombre ));
-        }
+       
 
         if (authorities.isEmpty()) {
             throw new UsernameNotFoundException("el usuario "+correo+"no tiene roles adignados");
