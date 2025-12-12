@@ -12,13 +12,14 @@ import com.proyecto.app.service.impl.UsuarioServiceImpl;
 
 @Controller
 public class LoginController {
+    /*
     @Autowired
-    private UsuarioServiceImpl usuarioService; 
+    private UsuarioServiceImpl usuarioService;  */
     @GetMapping("/login")
     public String login() {
         return "login";
     }
-
+    /*
     @PostMapping("/ingresar")
     public String ingresar(@ModelAttribute Usuario usuario) {
         List<Usuario> usuarios = usuarioService.findAll();
@@ -29,5 +30,5 @@ public class LoginController {
         }
         return "redirect:/login?error=true";
     }
-
+     */
 }
