@@ -58,7 +58,7 @@ public class UsuarioServiceImpl implements UsuarioService, UserDetailsService {
         }
 
         return User.builder()
-            .username(usuario.getCorreo())
+            .username(usuario.getemail())
             .password(usuario.getContraseña())
             .authorities(authorities)
             .accountExpired(false)

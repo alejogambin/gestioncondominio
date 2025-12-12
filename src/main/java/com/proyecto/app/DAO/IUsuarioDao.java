@@ -13,7 +13,7 @@ public interface IUsuarioDao extends CrudRepository<Usuario, Long>{
 
     Optional<Usuario> findByRut(String Rut);
 
-    boolean existsByCorreo(String correo);
+    boolean existsByemail(String email);
 
     boolean existsByRut(String rut);
 

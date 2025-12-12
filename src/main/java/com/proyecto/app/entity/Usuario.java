@@ -32,7 +32,7 @@ public class Usuario {
     @Column(nullable = false, length = 100)
     private String apellido ;
     @Column(unique = true,nullable = false, length = 150)
-    private String correo ;
+    private String email ;
     @Column(nullable = false, length = 225)
     private String contraseña ;
     
@@ -65,10 +65,10 @@ public class Usuario {
         this.updated_at = new Date();
     }
 
-    public Usuario(String nombre, String apellido, String correo, String contraseña, Set<Rol> roles) {
+    public Usuario(String nombre, String apellido, String email, String contraseña, Set<Rol> roles) {
         this.nombre = nombre;
         this.apellido = apellido;
-        this.correo = correo;
+        this.email = email;
         this.contraseña = contraseña;
         this.roles = roles;
         this.activo = true;
@@ -103,11 +103,11 @@ public class Usuario {
         this.apellido = apellido;
         this.updated_at = new Date();
     }
-    public String getCorreo() {
-        return correo;
+    public String getemail() {
+        return email;
     }
-    public void setCorreo(String correo) {
-        this.correo = correo;
+    public void setemail(String email) {
+        this.email = email;
         this.updated_at = new Date();
     }
     public String getContraseña() {
@@ -149,7 +149,7 @@ public class Usuario {
         rol.getUsuarios().remove(this);
     }
     public String GetUsername(){
-        return this.correo;
+        return this.email;
     }
     @Override
     public String toString(){
@@ -157,7 +157,7 @@ public class Usuario {
         "id_user="+ id_user + 
         ", nombre= '"+ nombre + 
         "'\'" + " apellido='" + apellido + '\'' +
-        "', correo='" + correo + 
+        "', email='" + email + 
         "', activo='" + activo + ", roles=" + roles.size() + "'}";
     }
 }
