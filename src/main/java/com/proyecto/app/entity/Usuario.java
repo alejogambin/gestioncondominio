@@ -103,10 +103,10 @@ public class Usuario {
         this.apellido = apellido;
         this.updated_at = new Date();
     }
-    public String getemail() {
+    public String getEmail() {
         return email;
     }
-    public void setemail(String email) {
+    public void setEmail(String email) {
         this.email = email;
         this.updated_at = new Date();
     }

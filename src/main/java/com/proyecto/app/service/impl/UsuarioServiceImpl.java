@@ -42,11 +42,11 @@ public class UsuarioServiceImpl implements UsuarioService, UserDetailsService {
     
     @Override
     @Transactional(readOnly = true)
-    public UserDetails loadUserByUsername(String correo) throws UsernameNotFoundException{
-        Usuario usuario = usuarioDao.findByEmail(correo).orElseThrow(()->
-            new UsernameNotFoundException("Usuario no encontrado con email: "+correo));
+    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException{
+        Usuario usuario = usuarioDao.findByEmail(email).orElseThrow(()->
+            new UsernameNotFoundException("Usuario no encontrado con email: "+email));
         if (!usuario.isActivo()){
-            throw new UsernameNotFoundException("La cuenta de "+ correo+ "esta desactivada. contacte al administrador.");
+            throw new UsernameNotFoundException("La cuenta de "+ email+ "esta desactivada. contacte al administrador.");
         }
         Set<GrantedAuthority> authorities = usuario.getRoles().stream()
         .map( rol -> new SimpleGrantedAuthority(rol.getNombre())).collect(Collectors.toSet());
@@ -54,11 +54,11 @@ public class UsuarioServiceImpl implements UsuarioService, UserDetailsService {
        
 
         if (authorities.isEmpty()) {
-            throw new UsernameNotFoundException("el usuario "+correo+"no tiene roles adignados");
+            throw new UsernameNotFoundException("el usuario "+email+"no tiene roles adignados");
         }
 
         return User.builder()
-            .username(usuario.getemail())
+            .username(usuario.getEmail())
             .password(usuario.getContraseña())
             .authorities(authorities)
             .accountExpired(false)

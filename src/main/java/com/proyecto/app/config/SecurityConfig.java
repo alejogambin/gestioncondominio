@@ -1,4 +1,4 @@
-package com.proyecto.config;
+package com.proyecto.app.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -40,48 +40,41 @@ public class SecurityConfig {
     }
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception{
-        return http
-        .authorizeHttpRequests(auth -> auth
-            .requestMatchers("/css/**",
-            "/js/**",
-            "/img/**",
-            "/webjars/**",
-            "/h2-console/**",
-            "/",
-            "/index",
-            "/home",
-            "/inicio",
-            "/registro")
-            .permitAll()
-
-            .requestMatchers("/usuario/**").hasAnyAuthority("ADMIN")
-
+        http.authorizeHttpRequests(auth -> auth
+            // Permitir rutas públicas sin autenticación
+            .requestMatchers("/","/index","/home","/inicio").permitAll()
+            .requestMatchers("/registro").permitAll()
+            .requestMatchers("/contacto","/nosotros").permitAll()
+            // Permitir recursos estáticos sin autenticación
+            .requestMatchers("/css/**","/js/**","/img/**","/images/**","/webjars/**").permitAll()
+            .requestMatchers("/h2-console/**").permitAll()
+            // Proteger rutas administrativas
+            .requestMatchers("/usuario/**").hasAuthority("ADMIN")
+            // Todas las demás rutas requieren autenticación
             .anyRequest().authenticated()
-        )
-    
-        .formLogin(login -> login
+        );
+
+        
+        http.formLogin(form -> form
             .loginPage("/login")
             .loginProcessingUrl("/login")
             .usernameParameter("email")
             .passwordParameter("contraseña")
-            .defaultSuccessUrl("/dasbord",true)
+            .defaultSuccessUrl("/dasboard", true)
             .failureUrl("/login?error=true")
             .permitAll()
-        )
-
-        .logout(logout -> logout
+        );
+        
+        http.logout(logout -> logout
             .logoutUrl("/logout")
-
             .logoutSuccessUrl("/login?logout=true")
-
             .invalidateHttpSession(true)
-
             .deleteCookies("JSESSIONID")
-
             .permitAll()
-
-        )
-        //.csrf().disable()
-        .build();
+        );
+        
+        http.csrf().disable();
+        
+        return http.build();
     }
 }
