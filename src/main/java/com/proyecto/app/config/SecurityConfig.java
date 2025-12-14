@@ -44,12 +44,12 @@ public class SecurityConfig {
             // Permitir rutas públicas sin autenticación
             .requestMatchers("/","/index","/home","/inicio").permitAll()
             .requestMatchers("/registro").permitAll()
-            .requestMatchers("/contacto","/nosotros","/api/list").permitAll()
+            .requestMatchers("/contacto","/nosotros","/usuario/json","/error").permitAll()
             // Permitir recursos estáticos sin autenticación
             .requestMatchers("/css/**","/js/**","/img/**","/images/**","/webjars/**").permitAll()
             .requestMatchers("/h2-console/**").permitAll()
             // Proteger rutas administrativas
-            .requestMatchers("/usuario/**").hasAuthority("ADMIN")
+            .requestMatchers("/torre/**").hasAuthority("ADMIN")
             // Todas las demás rutas requieren autenticación
             .anyRequest().authenticated()
         );

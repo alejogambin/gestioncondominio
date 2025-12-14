@@ -44,7 +44,7 @@
                         <td th:text="${u.id_user }" class="text-center">1</td>
                         <td th:text="${u.nombre+ ' '+ u.apellido}">Juan Pérez</td>
                         <td th:text="${u.email}">juan@example.com</td>
-                        <td th:text="${u.rol}">Administrador</td>
+                        <td th:text="${u.roles}">Administrador</td>
                         <td class="text-center">
                             <a th:href="@{'/usuario/editar/' + ${u.id_user}}" class="btn btn-outline-warning btn-sm me-1"
                                 title="Editar">

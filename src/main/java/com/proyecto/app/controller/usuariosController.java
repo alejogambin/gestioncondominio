@@ -32,6 +32,12 @@ public class usuariosController {
         return "usuario/list";
     }
     
+    @GetMapping("/json")
+    @ResponseBody
+    public List<Usuario> listarUsuariosApi(){
+        return usuarioService.findAll();
+    }
+    
     @GetMapping("/crear")
     public String crear(Model model) {
         model.addAttribute("usuario", usuarioService.findAll());
@@ -60,12 +66,6 @@ public class usuariosController {
         Usuario usuario = usuarioService.findOne(id);
         model.addAttribute("usuario", usuario);
         return "usuario/editar";
-    }
-    //genera un metodo para mostrar en json los usuarios
-    @GetMapping("/api/list")
-    @ResponseBody
-    public List<Usuario> listarUsuariosApi(){
-        return usuarioService.findAll();
     }
     
     
