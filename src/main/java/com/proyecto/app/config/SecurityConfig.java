@@ -44,7 +44,7 @@ public class SecurityConfig {
             // Permitir rutas públicas sin autenticación
             .requestMatchers("/","/index","/home","/inicio").permitAll()
             .requestMatchers("/registro").permitAll()
-            .requestMatchers("/contacto","/nosotros").permitAll()
+            .requestMatchers("/contacto","/nosotros","/api/list").permitAll()
             // Permitir recursos estáticos sin autenticación
             .requestMatchers("/css/**","/js/**","/img/**","/images/**","/webjars/**").permitAll()
             .requestMatchers("/h2-console/**").permitAll()
@@ -59,7 +59,7 @@ public class SecurityConfig {
             .loginPage("/login")
             .loginProcessingUrl("/login")
             .usernameParameter("email")
-            .passwordParameter("contraseña")
+            .passwordParameter("password")
             .defaultSuccessUrl("/dasboard", true)
             .failureUrl("/login?error=true")
             .permitAll()
@@ -74,6 +74,7 @@ public class SecurityConfig {
         );
         
         http.csrf().disable();
+        http.headers(headers -> headers.frameOptions().disable());
         
         return http.build();
     }

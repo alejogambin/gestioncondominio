@@ -2,6 +2,7 @@ package com.proyecto.app.controller;
 
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -17,6 +18,10 @@ public class LoginController {
     private UsuarioServiceImpl usuarioService;  */
     @GetMapping("/login")
     public String login() {
+        String password = "password1";
+        String hashed = BCrypt.hashpw(password, BCrypt.gensalt()); 
+        System.out.println("password en claro" + password);
+        System.out.println("Hashed password: " + hashed);
         return "login";
     }
     /*

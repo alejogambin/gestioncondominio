@@ -13,6 +13,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.proyecto.app.entity.Usuario;
 import com.proyecto.app.service.impl.UsuarioServiceImpl;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+
 
 
 
@@ -58,5 +61,12 @@ public class usuariosController {
         model.addAttribute("usuario", usuario);
         return "usuario/editar";
     }
+    //genera un metodo para mostrar en json los usuarios
+    @GetMapping("/api/list")
+    @ResponseBody
+    public List<Usuario> listarUsuariosApi(){
+        return usuarioService.findAll();
+    }
+    
     
 }

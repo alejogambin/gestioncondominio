@@ -21,7 +21,7 @@ import jakarta.persistence.TemporalType;
 import java.util.Set;
 import java.util.HashSet;
 @Entity
-@Table(name = "usuarios")
+@Table(name = "user")
 public class Usuario {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id_user; 
@@ -31,16 +31,16 @@ public class Usuario {
     private String nombre ;
     @Column(nullable = false, length = 100)
     private String apellido ;
-    @Column(unique = true,nullable = false, length = 150)
+    @Column(name = "correo", unique = true,nullable = false, length = 150)
     private String email ;
-    @Column(nullable = false, length = 225)
-    private String contraseña ;
+    @Column(name = "contraseña", nullable = false, length = 225)
+    private String password ;
     
     @ManyToMany(fetch = FetchType.EAGER, cascade={CascadeType.PERSIST, CascadeType.MERGE})
     @JoinTable(
         name = "usuario_roles",
-        joinColumns = @JoinColumn(name = "id_user"),
-        inverseJoinColumns = @JoinColumn(name = "rol_id")
+        joinColumns = @JoinColumn(name = "usuario_id"),
+        inverseJoinColumns = @JoinColumn(name = "roles_id")
 
     )
 
@@ -65,11 +65,16 @@ public class Usuario {
         this.updated_at = new Date();
     }
 
-    public Usuario(String nombre, String apellido, String email, String contraseña, Set<Rol> roles) {
+    public Usuario() {
+        this.roles = new HashSet<>();
+        this.activo = true;
+    }
+
+    public Usuario(String nombre, String apellido, String email, String password, Set<Rol> roles) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.email = email;
-        this.contraseña = contraseña;
+        this.password = password;
         this.roles = roles;
         this.activo = true;
     }
@@ -110,11 +115,11 @@ public class Usuario {
         this.email = email;
         this.updated_at = new Date();
     }
-    public String getContraseña() {
-        return contraseña;
+    public String getPassword() {
+        return password;
     }
-    public void setContraseña(String contraseña) {
-        this.contraseña = contraseña;
+    public void setPassword(String password) {
+        this.password = password;
         this.updated_at = new Date();
     }
     public Set<Rol> getRoles() {

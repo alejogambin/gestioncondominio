@@ -2,6 +2,7 @@ package com.proyecto.app.service.impl;
 
 import java.util.List;
 import java.util.Set;
+import java.util.HashSet;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,18 +49,22 @@ public class UsuarioServiceImpl implements UsuarioService, UserDetailsService {
         if (!usuario.isActivo()){
             throw new UsernameNotFoundException("La cuenta de "+ email+ "esta desactivada. contacte al administrador.");
         }
-        Set<GrantedAuthority> authorities = usuario.getRoles().stream()
-        .map( rol -> new SimpleGrantedAuthority(rol.getNombre())).collect(Collectors.toSet());
-
-       
-
-        if (authorities.isEmpty()) {
-            throw new UsernameNotFoundException("el usuario "+email+"no tiene roles adignados");
+        
+        Set<GrantedAuthority> authorities = new HashSet<>();
+        
+        // Si el usuario tiene roles, usarlos
+        if (usuario.getRoles() != null && !usuario.getRoles().isEmpty()) {
+            authorities = usuario.getRoles().stream()
+                .map(rol -> new SimpleGrantedAuthority(rol.getNombre()))
+                .collect(Collectors.toSet());
+        } else {
+            // Si no tiene roles, asignarle "USER" por defecto
+            authorities.add(new SimpleGrantedAuthority("USER"));
         }
 
         return User.builder()
             .username(usuario.getEmail())
-            .password(usuario.getContraseña())
+            .password(usuario.getPassword())
             .authorities(authorities)
             .accountExpired(false)
             .accountLocked(false)
