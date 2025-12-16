@@ -50,6 +50,8 @@ public class SecurityConfig {
             .requestMatchers("/h2-console/**").permitAll()
             // Proteger rutas administrativas
             .requestMatchers("/torre/**").hasAuthority("ADMIN")
+            .requestMatchers("/usuario/delete/**").hasAuthority("ADMIN")
+            .requestMatchers("/usuario/editar/**").hasAuthority("ADMIN")
             // Todas las demás rutas requieren autenticación
             .anyRequest().authenticated()
         );
@@ -73,7 +75,7 @@ public class SecurityConfig {
             .permitAll()
         );
         
-        http.csrf().disable();
+        //http.csrf().disable();
         http.headers(headers -> headers.frameOptions().disable());
         
         return http.build();

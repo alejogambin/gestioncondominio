@@ -16,6 +16,7 @@
                         <h5 class="card-title"><i class="bi bi-building me-2"></i>Torres</h5>
                         <p class="card-text">Administra las torres del condominio, incluyendo su número, nombre y dirección.</p>
                         <a th:href="@{/torre/list}" class="btn btn-outline-primary">Ver torres</a>
+                        <input type="hidden" name ="_csrf" value="token-aleatorio">
                     </div>
                 </div>
             </div>
@@ -26,7 +27,7 @@
                     <div class="card-body">
                         <h5 class="card-title"><i class="bi bi-door-open-fill me-2"></i>Departamentos</h5>
                         <p class="card-text">Consulta y gestiona los departamentos, su ocupación, asignación y relación con torres.</p>
-                        <a href="/departamento" class="btn btn-outline-primary">Administrar departamentos</a>
+                        <a th:href="@{/departamento}" class="btn btn-outline-primary">Administrar departamentos</a>
                     </div>
                 </div>
             </div>
@@ -37,7 +38,7 @@
                     <div class="card-body">
                         <h5 class="card-title"><i class="bi bi-car-front-fill me-2"></i>Estacionamientos</h5>
                         <p class="card-text">Gestiona los espacios de estacionamiento, su disponibilidad y asignación por departamento.</p>
-                        <a href="/estacionamiento" class="btn btn-outline-primary">Ver estacionamientos</a>
+                        <a th:href="@{/estacionamiento}" class="btn btn-outline-primary">Ver estacionamientos</a>
                     </div>
                 </div>
             </div>

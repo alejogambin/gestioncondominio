@@ -24,6 +24,7 @@
         <div class="d-flex justify-content-between align-items-center mb-4">
             <h2 class="mb-0"><i class="bi bi-people-fill me-2"></i>Lista de Usuarios</h2>
             <a th:href="@{/usuario/crear}" class="btn btn-primary d-flex align-items-center">
+                <input type="hidden" name ="_csrf" value="token-aleatorio">
                 <i class="bi bi-person-plus-fill me-2"></i> Agregar Usuario
             </a>
         </div>
@@ -44,7 +45,81 @@
                         <td th:text="${u.id_user }" class="text-center">1</td>
                         <td th:text="${u.nombre+ ' '+ u.apellido}">Juan Pérez</td>
                         <td th:text="${u.email}">juan@example.com</td>
-                        <td th:text="${u.roles}">Administrador</td>
+                        <td >
+                            <span th:each="r : ${u.roles}" th:text="${r.nombre}">Administrador</span>
+                        </td>
+                        <td class="text-center">
+                            <a th:href="@{'/usuario/editar/' + ${u.id_user}}" class="btn btn-outline-warning btn-sm me-1"
+                                title="Editar">
+                                <i class="bi bi-pencil-fill"></i>
+                            </a>
+                            <a th:href="@{'/usuario/delete/' + ${u.id_user}}" class="btn btn-outline-danger btn-sm"|
+                                onclick="return confirm('¿Estás seguro de eliminar este usuario?');" title="Eliminar">
+                                <i class="bi bi-trash-fill"></i>
+                            </a>
+                        </td>
+                    </tr>
+                    <tr th:if="${#lists.isEmpty(usuarios)}">
+                        <td colspan="6" class="text-center text-muted py-4">
+                            <p class="mb-1">No hay usuarios registrados.</p>
+                            <a th:href="@{/usuario/crear}">Crear el primer usuario</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="table-responsive">
+            <table class="table table-bordered table-hover align-middle bg-white shadow-sm">
+                <thead class="table-primary text-center">
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">descripcion</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="r : ${roles}">
+                        <td th:text="${r.id }" class="text-center">1</td>
+                        <td th:text="${r.Nombre}">Juan Pérez</td>
+                        <td th:text="${r.descripcion}">juan@example.com</td>
+                        
+                        <td class="text-center">
+                            <a th:href="@{'/usuario/editar/' + ${u.id_user}}" class="btn btn-outline-warning btn-sm me-1"
+                                title="Editar">
+                                <i class="bi bi-pencil-fill"></i>
+                            </a>
+                            <a th:href="@{'/usuario/delete/' + ${u.id_user}}" class="btn btn-outline-danger btn-sm"|
+                                onclick="return confirm('¿Estás seguro de eliminar este usuario?');" title="Eliminar">
+                                <i class="bi bi-trash-fill"></i>
+                            </a>
+                        </td>
+                    </tr>
+                    <tr th:if="${#lists.isEmpty(usuarios)}">
+                        <td colspan="6" class="text-center text-muted py-4">
+                            <p class="mb-1">No hay usuarios registrados.</p>
+                            <a th:href="@{/usuario/crear}">Crear el primer usuario</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="table-responsive">
+            <table class="table table-bordered table-hover align-middle bg-white shadow-sm">
+                <thead class="table-primary text-center">
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">descripcion</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="ur : ${usuario_roles}">
+                        <td th:text="${ur.usuario_id }" class="text-center">1</td>
+                        <td th:text="${ur.roles_id}">Juan Pérez</td>
+                        
+                        
                         <td class="text-center">
                             <a th:href="@{'/usuario/editar/' + ${u.id_user}}" class="btn btn-outline-warning btn-sm me-1"
                                 title="Editar">
