@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import com.proyecto.app.entity.Usuario;
+import com.proyecto.app.service.impl.RolServiceImpl;
 import com.proyecto.app.service.impl.UsuarioServiceImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,7 +16,8 @@ import org.slf4j.LoggerFactory;
 @Controller
 public class registroController {
     private static final Logger logger = LoggerFactory.getLogger(registroController.class);
-    
+    @Autowired
+    private RolServiceImpl rolService;
     @Autowired
     private UsuarioServiceImpl usuarioService;
     
@@ -29,6 +31,7 @@ public class registroController {
     
     @PostMapping("/registro")
     public String registrarUsuario(@ModelAttribute Usuario usuario, Model model) {
+        model.addAttribute("roles", rolService.findAll());
         try {
             // Validar que los campos obligatorios no estén vacíos
             if (usuario.getNombre() == null || usuario.getNombre().isEmpty() ||
@@ -43,6 +46,7 @@ public class registroController {
             String passwordEncriptada = passwordEncoder.encode(usuario.getPassword());
             usuario.setPassword(passwordEncriptada);
             usuario.setActivo(true);
+            usuario.setRoles(new java.util.HashSet<>(java.util.Set.of(rolService.findOne(2L)))); // Asignar rol USER por defecto
             usuarioService.save(usuario);
             return "redirect:/login?success=true";
         } catch (Exception e) {

@@ -62,11 +62,6 @@ public class usuariosController {
         return "redirect:/usuario/list";
     }
 
-    @PostMapping("/registrar")
-    public String registrar(@ModelAttribute Usuario usuario) {
-        usuarioService.save(usuario);
-        return "redirect:/login";
-    }
 
     @GetMapping("/delete/{id}")
     public String delete(@PathVariable Long id) {

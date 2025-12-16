@@ -17,7 +17,7 @@ import com.proyecto.app.service.impl.UsuarioServiceImpl;
 @EnableWebSecurity
 public class SecurityConfig {
     private final UsuarioServiceImpl userDetailsService;
-
+    
     public SecurityConfig(UsuarioServiceImpl userDetailsService ){
         this.userDetailsService = userDetailsService;
     }
@@ -55,7 +55,6 @@ public class SecurityConfig {
             // Todas las demás rutas requieren autenticación
             .anyRequest().authenticated()
         );
-
         
         http.formLogin(form -> form
             .loginPage("/login")

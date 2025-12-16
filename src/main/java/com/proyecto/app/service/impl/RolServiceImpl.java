@@ -32,4 +32,5 @@ public class RolServiceImpl implements RolService {
        rolDao.deleteById(id);
     }
     
+    
 }

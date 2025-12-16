@@ -12,4 +12,6 @@ public interface RolService {
     public Rol findOne(Long id);
 
     public void delete(Long id);
+
+    
 }

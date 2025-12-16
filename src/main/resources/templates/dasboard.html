@@ -7,16 +7,17 @@
     <div th:replace="~{fragmentos/navbar :: navbar-dashboard}"></div>
     <div class="container my-5 flex-grow-1">
         <h1 class="text-center mb-5 fw-bold">Panel de Gestión del Condominio</h1>
-
+        
         <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
             <!-- Torres -->
             <div class="col">
                 <div class="card h-100 shadow-sm text-center">
                     <div class="card-body">
                         <h5 class="card-title"><i class="bi bi-building me-2"></i>Torres</h5>
-                        <p class="card-text">Administra las torres del condominio, incluyendo su número, nombre y dirección.</p>
+                        <p class="card-text">Administra las torres del condominio, incluyendo su número, nombre y
+                            dirección.</p>
                         <a th:href="@{/torre/list}" class="btn btn-outline-primary">Ver torres</a>
-                        <input type="hidden" name ="_csrf" value="token-aleatorio">
+                        <input type="hidden" name="_csrf" value="token-aleatorio">
                     </div>
                 </div>
             </div>
@@ -26,7 +27,8 @@
                 <div class="card h-100 shadow-sm text-center">
                     <div class="card-body">
                         <h5 class="card-title"><i class="bi bi-door-open-fill me-2"></i>Departamentos</h5>
-                        <p class="card-text">Consulta y gestiona los departamentos, su ocupación, asignación y relación con torres.</p>
+                        <p class="card-text">Consulta y gestiona los departamentos, su ocupación, asignación y relación
+                            con torres.</p>
                         <a th:href="@{/departamento}" class="btn btn-outline-primary">Administrar departamentos</a>
                     </div>
                 </div>
@@ -37,7 +39,8 @@
                 <div class="card h-100 shadow-sm text-center">
                     <div class="card-body">
                         <h5 class="card-title"><i class="bi bi-car-front-fill me-2"></i>Estacionamientos</h5>
-                        <p class="card-text">Gestiona los espacios de estacionamiento, su disponibilidad y asignación por departamento.</p>
+                        <p class="card-text">Gestiona los espacios de estacionamiento, su disponibilidad y asignación
+                            por departamento.</p>
                         <a th:href="@{/estacionamiento}" class="btn btn-outline-primary">Ver estacionamientos</a>
                     </div>
                 </div>
@@ -48,7 +51,8 @@
                 <div class="card h-100 shadow-sm text-center">
                     <div class="card-body">
                         <h5 class="card-title"><i class="bi bi-person-fill me-2"></i>Usuarios</h5>
-                        <p class="card-text">Administra los usuarios del sistema, sus roles y permisos dentro del condominio.</p>
+                        <p class="card-text">Administra los usuarios del sistema, sus roles y permisos dentro del
+                            condominio.</p>
                         <a th:href="@{/usuario/list}" class="btn btn-outline-primary">Gestionar usuarios</a>
                     </div>
                 </div>
@@ -59,7 +63,8 @@
                 <div class="card h-100 shadow-sm text-center">
                     <div class="card-body">
                         <h5 class="card-title"><i class="bi bi-box-seam me-2"></i>Bodegas</h5>
-                        <p class="card-text">Controla las bodegas disponibles, su asignación por departamento y estado de uso.</p>
+                        <p class="card-text">Controla las bodegas disponibles, su asignación por departamento y estado
+                            de uso.</p>
                         <a href="/bodega" class="btn btn-outline-primary">Ver bodegas</a>
                     </div>
                 </div>
@@ -69,7 +74,8 @@
                 <div class="card h-100 shadow-sm text-center">
                     <div class="card-body">
                         <h5 class="card-title"><i class="bi bi-door-open-fill me-2"></i>Visitas</h5>
-                        <p class="card-text">Consulta y gestiona las visitas al condominio, donde van y cuanto tiempo estan</p>
+                        <p class="card-text">Consulta y gestiona las visitas al condominio, donde van y cuanto tiempo
+                            estan</p>
                         <a href="/" class="btn btn-outline-primary">Administrar visitas</a>
                     </div>
                 </div>
