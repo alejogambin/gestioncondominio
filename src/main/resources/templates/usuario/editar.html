@@ -11,37 +11,44 @@
                 <div class="card shadow-sm border-0">
                     <div class="card-body p-4">
                         <h2 class="text-center mb-4 fw-bold text-primary">Editar Usuario</h2>
-                        <form id="formeditarUSuario" th:action="@{/usuario/guardar}" th:object="${usuario}" method="post" autocomplete="off">
-                            <input type="hidden" for="id_user" name="id_user" th:field="*{id_user}" id="id_user"></input>
-                            <input type="hidden" for="updated_at" name="updated_at" th:field="*{updated_at}" id="updated_at"></input>
-                            <input type="hidden" for="id_user" name="id_user" th:field="*{id_user}" id="id_user"></input>
+                        <form id="formeditarUSuario" th:action="@{/usuario/editar/{id}(id=${usuario.id_user})}" th:object="${usuario}"
+                            method="post" autocomplete="off">
+                            <input type="hidden" for="id_user" name="id_user" th:field="*{id_user}"
+                                id="id_user"></input>
+                            <input type="hidden" for="updated_at" name="updated_at" th:field="*{updated_at}"
+                                id="updated_at"></input>
+                            <input type="hidden" for="id_user" name="id_user" th:field="*{id_user}"
+                                id="id_user"></input>
                             <div class="mb-3">
                                 <label for="rut" class="form-label">RUT</label>
-                                <input type="text" class="form-control" th:field="*{rut}" id="rut" name="rut" required placeholder="Ej: 12.345.678-9">
+                                <input type="text" class="form-control" th:field="*{rut}" id="rut" name="rut" required
+                                    placeholder="Ej: 12.345.678-9">
                             </div>
                             <div class="mb-3">
                                 <label for="nombre" class="form-label">Nombre</label>
-                                <input type="text" class="form-control" th:field="*{nombre}" id="nombre" name="nombre" required placeholder="Nombre">
+                                <input type="text" class="form-control" th:field="*{nombre}" id="nombre" name="nombre"
+                                    required placeholder="Nombre">
                             </div>
                             <div class="mb-3">
                                 <label for="apellido" class="form-label">Apellido</label>
-                                <input type="text" class="form-control" th:field="*{apellido}" id="apellido" name="apellido" required placeholder="Apellido">
+                                <input type="text" class="form-control" th:field="*{apellido}" id="apellido"
+                                    name="apellido" required placeholder="Apellido">
                             </div>
                             <div class="mb-3">
                                 <label for="email" class="form-label">correo electrónico</label>
-                                <input type="email" class="form-control" th:field="*{email}" id="email" name="email" required placeholder="email@ejemplo.com">
+                                <input type="email" class="form-control" th:field="*{email}" id="email" name="email"
+                                    required placeholder="email@ejemplo.com">
                             </div>
                             <div class="mb-3">
-                                <label for="contraseña" class="form-label">Contraseña</label>
-                                <input type="password" class="form-control" th:field="*{contraseña}" id="contraseña" name="contraseña" required placeholder="Mínimo 8 caracteres">
+                                <label for="password" class="form-label">Contraseña</label>
+                                <input type="password" class="form-control" th:field="*{password}" id="password"
+                                    name="password" required placeholder="Mínimo 8 caracteres">
                             </div>
                             <div class="mb-3">
-                                <label for="rol" class="form-label">Rol</label>
-                                <select id="rol" th:field="*{rol}" name="rol" class="form-select" required>
+                                <select id="rolId" name="rolId" class="form-select" required>
                                     <option value="" disabled selected>Selecciona un rol</option>
-                                    <option value="administrador">Administrador</option>
-                                    <option value="propietario">Propietario</option>
-                                    <option value="arrendatario">Arrendatario</option>
+                                    <option th:each="r : ${roles}" th:value="${r.id}" th:text="${r.nombre}">
+                                    </option>
                                 </select>
                             </div>
                             <div class="d-grid">
