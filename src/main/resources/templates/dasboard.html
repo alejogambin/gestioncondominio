@@ -47,7 +47,7 @@
             </div>
 
             <!-- Usuarios -->
-            <div class="col">
+            <div sec:authorize="hasRole('ADMIN')" class="col">
                 <div class="card h-100 shadow-sm text-center">
                     <div class="card-body">
                         <h5 class="card-title"><i class="bi bi-person-fill me-2"></i>Usuarios</h5>
@@ -70,7 +70,7 @@
                 </div>
             </div>
             <!-- Visitas -->
-            <div class="col">
+            <div sec:authorize="hasRole('ADMIN')" class="col">
                 <div class="card h-100 shadow-sm text-center">
                     <div class="card-body">
                         <h5 class="card-title"><i class="bi bi-door-open-fill me-2"></i>Visitas</h5>

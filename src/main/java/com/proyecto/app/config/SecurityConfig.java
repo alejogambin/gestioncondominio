@@ -49,9 +49,9 @@ public class SecurityConfig {
             .requestMatchers("/css/**","/js/**","/img/**","/images/**","/webjars/**").permitAll()
             .requestMatchers("/h2-console/**").permitAll()
             // Proteger rutas administrativas
-            .requestMatchers("/torre/**").hasAuthority("ADMIN")
-            .requestMatchers("/usuario/delete/**").hasAuthority("ADMIN")
-            .requestMatchers("/usuario/editar/**").hasAuthority("ADMIN")
+            .requestMatchers("/torre/**").hasAuthority("ROLE_ADMIN")
+            .requestMatchers("/usuario/delete/**").hasAuthority("ROLE_ADMIN")
+            .requestMatchers("/usuario/editar/**").hasAuthority("ROLE_ADMIN")
             // Todas las demás rutas requieren autenticación
             .anyRequest().authenticated()
         );
