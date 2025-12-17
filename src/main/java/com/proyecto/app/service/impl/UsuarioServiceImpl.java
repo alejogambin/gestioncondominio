@@ -2,6 +2,7 @@ package com.proyecto.app.service.impl;
 
 import java.util.List;
 import java.util.Set;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.stream.Collectors;
 
@@ -38,7 +39,9 @@ public class UsuarioServiceImpl implements UsuarioService, UserDetailsService {
     }
     @Transactional
     public List<Usuario> findAll() {
-        return (List<Usuario>) usuarioDao.findAll();
+        List<Usuario> list = new ArrayList<>();
+        usuarioDao.findAll().forEach(list::add);
+        return list;
     }
     
     @Override
@@ -72,18 +75,5 @@ public class UsuarioServiceImpl implements UsuarioService, UserDetailsService {
             .disabled(!usuario.isActivo())
             .build();           
     }
-    @Override
-    public List<Usuario> ListAllUsuario() {
-        List<Usuario> usuarios = usuarioDao.ListAllUsuario();
-        return usuarios.stream()
-        .map(u-> new Usuario(
-            u.getId_user(),
-            u.getNombre(),
-            u.getApellido(),
-            u.getRut(),
-            u.getEmail(),
-            u.getPassword(),
-            u.isActivo()
-        )).collect(Collectors.toList());
-    }
+    
 }

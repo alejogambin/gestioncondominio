@@ -17,10 +17,9 @@ public interface IUsuarioDao extends CrudRepository<Usuario, Long>{
 
     Optional<Usuario> findByRut(String Rut);
 
-    boolean existsByemail(String email);
+    boolean existsByEmail(String email);
 
     boolean existsByRut(String rut);
 
-    List<Usuario> ListAllUsuario();
-    
+   
 }

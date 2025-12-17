@@ -1,10 +1,9 @@
 package com.proyecto.app.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GenerationType;
-
 import java.util.HashSet;
 import java.util.Set;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import jakarta.persistence.*;
 
@@ -22,6 +21,7 @@ public class Rol {
     private String descripcion;
 
     @ManyToMany(mappedBy = "roles")
+    @JsonIgnoreProperties("roles")
     private Set<Usuario> usuarios = new HashSet<>();
 
     public Rol(){

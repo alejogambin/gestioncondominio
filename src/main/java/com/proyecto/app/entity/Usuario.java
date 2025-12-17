@@ -3,6 +3,8 @@ import java.util.Date;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -43,7 +45,7 @@ public class Usuario {
         inverseJoinColumns = @JoinColumn(name = "roles_id")
 
     )
-
+    @JsonIgnoreProperties("usuarios")
     private Set<Rol> roles = new HashSet<>();
 
     @Column(nullable = false)

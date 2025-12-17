@@ -45,7 +45,7 @@ public class usuariosController {
     @GetMapping(value ="/json", produces = "application/json")
     @ResponseBody
     public List<Usuario> listarUsuariosApi() {
-        return usuarioService.ListAllUsuario();
+        return usuarioService.findAll();
     }
 
     @GetMapping("/crear")
