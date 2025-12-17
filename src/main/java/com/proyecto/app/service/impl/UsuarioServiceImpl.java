@@ -72,4 +72,18 @@ public class UsuarioServiceImpl implements UsuarioService, UserDetailsService {
             .disabled(!usuario.isActivo())
             .build();           
     }
+    @Override
+    public List<Usuario> ListAllUsuario() {
+        List<Usuario> usuarios = usuarioDao.ListAllUsuario();
+        return usuarios.stream()
+        .map(u-> new Usuario(
+            u.getId_user(),
+            u.getNombre(),
+            u.getApellido(),
+            u.getRut(),
+            u.getEmail(),
+            u.getPassword(),
+            u.isActivo()
+        )).collect(Collectors.toList());
+    }
 }

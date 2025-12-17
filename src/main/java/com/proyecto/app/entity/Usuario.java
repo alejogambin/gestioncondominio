@@ -70,6 +70,16 @@ public class Usuario {
         this.activo = true;
     }
 
+    public Usuario(Long id_user,String nombre, String apellido,String rut ,String email, String password, boolean activo) {
+        this.id_user = id_user;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.rut = rut;
+        this.email = email;
+        this.password = password;
+        this.activo = activo;
+    }
+
     public Usuario(String nombre, String apellido, String email, String password, Set<Rol> roles) {
         this.nombre = nombre;
         this.apellido = apellido;
@@ -78,7 +88,9 @@ public class Usuario {
         this.roles = roles;
         this.activo = true;
     }
+    
 
+   
     // Getters and Setters
     public long getId_user() {
         return id_user;

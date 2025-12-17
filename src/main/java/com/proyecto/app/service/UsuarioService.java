@@ -9,6 +9,8 @@ import com.proyecto.app.entity.Usuario;
 public interface UsuarioService {
     
     public List<Usuario> findAll();
+    
+    List<Usuario> ListAllUsuario();
 
     public Usuario save(Usuario usuario);
 

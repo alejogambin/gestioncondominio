@@ -6,6 +6,7 @@ import org.springframework.data.repository.query.Param;
 
 import com.proyecto.app.entity.Usuario;
 
+import java.util.List;
 import java.util.Optional;
 
 
@@ -20,5 +21,6 @@ public interface IUsuarioDao extends CrudRepository<Usuario, Long>{
 
     boolean existsByRut(String rut);
 
+    List<Usuario> ListAllUsuario();
     
 }

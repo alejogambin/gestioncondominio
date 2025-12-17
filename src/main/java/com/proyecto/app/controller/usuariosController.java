@@ -42,10 +42,10 @@ public class usuariosController {
         return "usuario/list";
     }
     @CrossOrigin(origins = "http://localhost:8100")
-    @GetMapping("/json")
+    @GetMapping(value ="/json", produces = "application/json")
     @ResponseBody
     public List<Usuario> listarUsuariosApi() {
-        return usuarioService.findAll();
+        return usuarioService.ListAllUsuario();
     }
 
     @GetMapping("/crear")
